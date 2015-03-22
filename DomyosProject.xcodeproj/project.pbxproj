@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93136D8A1ABC4F240034CC25 /* CreateExerciceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93136D891ABC4F240034CC25 /* CreateExerciceTableViewController.swift */; };
+		93136D8C1ABC4F840034CC25 /* ListExerciceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93136D8B1ABC4F840034CC25 /* ListExerciceTableViewController.swift */; };
+		935FBA651ABDB4CB00EB56B8 /* CreateActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */; };
+		9364FF341AAF377D0025569F /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9364FF331AAF377D0025569F /* Default-Landscape@2x.png */; };
 		93D420741AADDC800096EFA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420731AADDC800096EFA1 /* AppDelegate.swift */; };
-		93D420761AADDC800096EFA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420751AADDC800096EFA1 /* ViewController.swift */; };
+		93D420761AADDC800096EFA1 /* ExerciceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420751AADDC800096EFA1 /* ExerciceViewController.swift */; };
 		93D420791AADDC800096EFA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D420771AADDC800096EFA1 /* Main.storyboard */; };
 		93D4207B1AADDC800096EFA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D4207A1AADDC800096EFA1 /* Images.xcassets */; };
-		93D4207E1AADDC800096EFA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D4207C1AADDC800096EFA1 /* LaunchScreen.xib */; };
 		93D4208A1AADDC800096EFA1 /* DomyosProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420891AADDC800096EFA1 /* DomyosProjectTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,13 +29,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93136D891ABC4F240034CC25 /* CreateExerciceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateExerciceTableViewController.swift; sourceTree = "<group>"; };
+		93136D8B1ABC4F840034CC25 /* ListExerciceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListExerciceTableViewController.swift; sourceTree = "<group>"; };
+		935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateActionViewController.swift; sourceTree = "<group>"; };
+		9364FF331AAF377D0025569F /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		93D4206E1AADDC800096EFA1 /* DomyosProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DomyosProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D420721AADDC800096EFA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93D420731AADDC800096EFA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		93D420751AADDC800096EFA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		93D420751AADDC800096EFA1 /* ExerciceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceViewController.swift; sourceTree = "<group>"; };
 		93D420781AADDC800096EFA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93D4207A1AADDC800096EFA1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		93D4207D1AADDC800096EFA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		93D420831AADDC800096EFA1 /* DomyosProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomyosProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D420881AADDC800096EFA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93D420891AADDC800096EFA1 /* DomyosProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomyosProjectTests.swift; sourceTree = "<group>"; };
@@ -59,6 +65,7 @@
 		93D420651AADDC800096EFA1 = {
 			isa = PBXGroup;
 			children = (
+				9364FF331AAF377D0025569F /* Default-Landscape@2x.png */,
 				93D420701AADDC800096EFA1 /* DomyosProject */,
 				93D420861AADDC800096EFA1 /* DomyosProjectTests */,
 				93D4206F1AADDC800096EFA1 /* Products */,
@@ -77,11 +84,11 @@
 		93D420701AADDC800096EFA1 /* DomyosProject */ = {
 			isa = PBXGroup;
 			children = (
-				93D420731AADDC800096EFA1 /* AppDelegate.swift */,
-				93D420751AADDC800096EFA1 /* ViewController.swift */,
+				93D420751AADDC800096EFA1 /* ExerciceViewController.swift */,
 				93D420771AADDC800096EFA1 /* Main.storyboard */,
-				93D4207A1AADDC800096EFA1 /* Images.xcassets */,
-				93D4207C1AADDC800096EFA1 /* LaunchScreen.xib */,
+				93136D8B1ABC4F840034CC25 /* ListExerciceTableViewController.swift */,
+				935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */,
+				93136D891ABC4F240034CC25 /* CreateExerciceTableViewController.swift */,
 				93D420711AADDC800096EFA1 /* Supporting Files */,
 			);
 			path = DomyosProject;
@@ -90,6 +97,8 @@
 		93D420711AADDC800096EFA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				93D4207A1AADDC800096EFA1 /* Images.xcassets */,
+				93D420731AADDC800096EFA1 /* AppDelegate.swift */,
 				93D420721AADDC800096EFA1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -193,7 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93D420791AADDC800096EFA1 /* Main.storyboard in Resources */,
-				93D4207E1AADDC800096EFA1 /* LaunchScreen.xib in Resources */,
+				9364FF341AAF377D0025569F /* Default-Landscape@2x.png in Resources */,
 				93D4207B1AADDC800096EFA1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,8 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93D420761AADDC800096EFA1 /* ViewController.swift in Sources */,
+				93136D8A1ABC4F240034CC25 /* CreateExerciceTableViewController.swift in Sources */,
+				935FBA651ABDB4CB00EB56B8 /* CreateActionViewController.swift in Sources */,
+				93D420761AADDC800096EFA1 /* ExerciceViewController.swift in Sources */,
 				93D420741AADDC800096EFA1 /* AppDelegate.swift in Sources */,
+				93136D8C1ABC4F840034CC25 /* ListExerciceTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,14 +254,6 @@
 				93D420781AADDC800096EFA1 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		93D4207C1AADDC800096EFA1 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				93D4207D1AADDC800096EFA1 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -338,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = DomyosProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = DomyosProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -407,6 +413,7 @@
 				93D4208F1AADDC800096EFA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93D420901AADDC800096EFA1 /* Build configuration list for PBXNativeTarget "DomyosProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +422,7 @@
 				93D420921AADDC800096EFA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
