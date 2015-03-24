@@ -12,7 +12,12 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     
     var exercice: Exercice?
     
-    //var actions = [ActionExercice]()
+    @IBOutlet weak var titleTextField: UITextField! {
+        didSet {
+            titleTextField.delegate = self
+            titleTextField.placeholder = "Nom de votre Exercice"
+        }
+    }
 
     // MARK: - LifeCycle
     
@@ -31,23 +36,38 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
         
         tableView.reloadData()
     }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        observeTextField()
+    }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let observer = ttfObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(observer)
+        }
+    }
+
     // MARK: - Storyboard Actions
     
-    @IBOutlet weak var titleTextField: UITextField! {
-        didSet {
-            titleTextField.delegate = self
-            titleTextField.placeholder = "Nom de votre Exercice"
+    var ttfObserver: NSObjectProtocol?
+    
+    func observeTextField() {
+        let center = NSNotificationCenter.defaultCenter()
+        let queue = NSOperationQueue.mainQueue()
+        
+        ttfObserver = center.addObserverForName(UITextFieldTextDidChangeNotification, object: titleTextField, queue: queue) { notification in
+            if let exercice = self.exercice {
+                exercice.title = self.titleTextField.text
+            }
         }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
-        if exercice != nil {
-            // bug bizarre, ne veut pas prendre la valeur du textfield directement
-            exercice!.title = textField.text
-        }
         
         return true
     }

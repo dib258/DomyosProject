@@ -12,7 +12,7 @@
 		935FBA651ABDB4CB00EB56B8 /* CreateActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */; };
 		9364FF341AAF377D0025569F /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9364FF331AAF377D0025569F /* Default-Landscape@2x.png */; };
 		93D420741AADDC800096EFA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420731AADDC800096EFA1 /* AppDelegate.swift */; };
-		93D420761AADDC800096EFA1 /* ExerciceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420751AADDC800096EFA1 /* ExerciceViewController.swift */; };
+		93D420761AADDC800096EFA1 /* PlayExerciceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420751AADDC800096EFA1 /* PlayExerciceViewController.swift */; };
 		93D420791AADDC800096EFA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D420771AADDC800096EFA1 /* Main.storyboard */; };
 		93D4207B1AADDC800096EFA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D4207A1AADDC800096EFA1 /* Images.xcassets */; };
 		93D4208A1AADDC800096EFA1 /* DomyosProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420891AADDC800096EFA1 /* DomyosProjectTests.swift */; };
@@ -36,7 +36,7 @@
 		93D4206E1AADDC800096EFA1 /* DomyosProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DomyosProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D420721AADDC800096EFA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93D420731AADDC800096EFA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		93D420751AADDC800096EFA1 /* ExerciceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceViewController.swift; sourceTree = "<group>"; };
+		93D420751AADDC800096EFA1 /* PlayExerciceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayExerciceViewController.swift; sourceTree = "<group>"; };
 		93D420781AADDC800096EFA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93D4207A1AADDC800096EFA1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93D420831AADDC800096EFA1 /* DomyosProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomyosProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +84,7 @@
 		93D420701AADDC800096EFA1 /* DomyosProject */ = {
 			isa = PBXGroup;
 			children = (
-				93D420751AADDC800096EFA1 /* ExerciceViewController.swift */,
+				93D420751AADDC800096EFA1 /* PlayExerciceViewController.swift */,
 				93D420771AADDC800096EFA1 /* Main.storyboard */,
 				93136D8B1ABC4F840034CC25 /* ListExerciceTableViewController.swift */,
 				935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */,
@@ -223,7 +223,7 @@
 			files = (
 				93136D8A1ABC4F240034CC25 /* CreateExerciceTableViewController.swift in Sources */,
 				935FBA651ABDB4CB00EB56B8 /* CreateActionViewController.swift in Sources */,
-				93D420761AADDC800096EFA1 /* ExerciceViewController.swift in Sources */,
+				93D420761AADDC800096EFA1 /* PlayExerciceViewController.swift in Sources */,
 				93D420741AADDC800096EFA1 /* AppDelegate.swift in Sources */,
 				93136D8C1ABC4F840034CC25 /* ListExerciceTableViewController.swift in Sources */,
 			);

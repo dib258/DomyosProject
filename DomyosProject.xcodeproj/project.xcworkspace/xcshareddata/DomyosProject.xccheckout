@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>12F708B4-CFD8-4C2A-9813-02EC307133EC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DomyosProject</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F5A31092A15A373BD60CEC4859E9AD8A459E7020</key>
+		<string>github.com:dib258/DomyosProject.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DomyosProject.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F5A31092A15A373BD60CEC4859E9AD8A459E7020</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:dib258/DomyosProject.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F5A31092A15A373BD60CEC4859E9AD8A459E7020</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F5A31092A15A373BD60CEC4859E9AD8A459E7020</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DomyosProject</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -29,7 +29,7 @@ class ListExerciceTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let cetvc = segue.destinationViewController as? CreateExerciceTableViewController {
-            if segue.identifier == "CreateNewExercice" {
+            if segue.identifier == Constants.CreateNewExerciceSegue {
                 let newExercice = Exercice()
             
                 cetvc.exercice = newExercice
@@ -38,9 +38,10 @@ class ListExerciceTableViewController: UITableViewController {
             }
         }
         
-        if let evc = segue.destinationViewController as? ExerciceViewController {
-            if segue.identifier == "playExercice" {
+        if let evc = segue.destinationViewController.contentViewController as? PlayExerciceViewController {
+            if segue.identifier == Constants.PlayExerciceSegue {
                 if let exerciceIndex = tableView.indexPathForSelectedRow()?.row {
+                    println(" index : \(exerciceIndex)")
                     evc.exercice = exercices[exerciceIndex]
                 }
             }
@@ -62,12 +63,14 @@ class ListExerciceTableViewController: UITableViewController {
         return exercices.count
     }
 
-    private struct StoryBoard {
+    private struct Constants {
         static let CellReuseIdentifier = "Exercice"
+        static let CreateNewExerciceSegue = "CreateNewExercice"
+        static let PlayExerciceSegue = "playExercice"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(StoryBoard.CellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
 
         cell.textLabel?.text = exercices[indexPath.row].title
         cell.detailTextLabel?.text = "\(exercices[indexPath.row].duration)"
