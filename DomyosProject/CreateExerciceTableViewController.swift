@@ -53,11 +53,10 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     }
     
     @IBAction func createNewAction(segue: UIStoryboardSegue) {
-        println("someone unwound back to me")
         if segue.identifier == Constants.UnwoundedSegue {
             if let svc = segue.sourceViewController as? CreateActionViewController {
                 if exercice?.actions.last !== svc.action {
-                    exercice?.actions.append(svc.action)
+                    exercice?.actions.append(svc.action!)
                 }
             }
         }
@@ -75,12 +74,7 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.NextStepSegue {
             if let cavc = segue.destinationViewController.contentViewController as? CreateActionViewController {
-
-//                let action = ActionExercice()
-//
-//                cavc.action = action
-                
-//                exercice?.actions.append(action)
+                cavc.action = ActionExercice()
             }
         }
     }
