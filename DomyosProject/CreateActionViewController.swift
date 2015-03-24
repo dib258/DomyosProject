@@ -111,7 +111,11 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
             if let action = self.action {
                 // TODO: check and force to put an int
                 // Maybe an alert to slide sec, min, hours
-                action.duration = self.dureeTextField.text.toInt()!
+                if let duree = self.dureeTextField.text.toInt() {
+                    action.duration = duree
+                } else {
+                    action.duration = 0
+                }
             }
         }
         

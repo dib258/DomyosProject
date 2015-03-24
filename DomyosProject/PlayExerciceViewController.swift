@@ -40,13 +40,6 @@ class PlayExerciceViewController: UIViewController {
         if isCounting == false {
             timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
             isCounting = true
-            
-            // Hide the play button
-            playBtn.enabled = false
-            playBtn.tintColor = UIColor.clearColor()
-            // Show the pause button
-            pauseBtn.enabled = true
-            pauseBtn.tintColor = nil
         }
     }
     
@@ -54,13 +47,6 @@ class PlayExerciceViewController: UIViewController {
         if isCounting == true {
             timer.invalidate()
             isCounting = false
-            
-            // Show the play button
-            playBtn.enabled = true
-            playBtn.tintColor = nil
-            // Hide the pause button
-            pauseBtn.enabled = false
-            pauseBtn.tintColor = UIColor.clearColor()
         }
         
     }
@@ -73,10 +59,22 @@ class PlayExerciceViewController: UIViewController {
         let minutes = total_minutes % 60
         let total_hours = total_minutes / 60
         let hours = total_hours % 24
+
         
-        println("total_seconds \(total_seconds) total_minutes \(total_minutes) total_hours \(total_hours)")
+        var retour = ""
         
-        return "\(hours)h \(minutes)min \(seconds)sec"
+        if total_hours > 0 {
+            retour += "\(hours) h"
+        }
+        
+        if total_minutes > 0 {
+            retour += "\(minutes) min"
+        }
+        
+        retour += "\(seconds) sec"
+        
+        println(retour)
+        return retour
 
     }
     
@@ -93,6 +91,7 @@ class PlayExerciceViewController: UIViewController {
             timeLabel.text = secondFormatToHours(Double(action.duration - counter))
         } else {
             setFirstAction()
+            updateCounter()
         }
     }
     
