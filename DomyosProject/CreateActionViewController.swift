@@ -67,9 +67,10 @@ class CreateActionViewController: UIViewController {
         
         dutfObserver = center.addObserverForName(UITextFieldTextDidChangeNotification, object: dureeTextField, queue: queue) { notification in
             if let action = self.action {
-                // TODO: check and force to put an int
                 // Maybe an alert to slide sec, min, hours
-                action.duration = self.dureeTextField.text.toInt()!
+                if let dur = self.dureeTextField.text.toInt() {
+                    action.duration = dur
+                }
             }
         }
         

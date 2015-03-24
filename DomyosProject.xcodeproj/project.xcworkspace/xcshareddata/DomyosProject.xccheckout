@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>12F708B4-CFD8-4C2A-9813-02EC307133EC</string>
+	<string>6110977D-6136-4F96-8E12-92396CADA889</string>
 	<key>IDESourceControlProjectName</key>
 	<string>DomyosProject</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F5A31092A15A373BD60CEC4859E9AD8A459E7020</key>
-		<string>github.com:dib258/DomyosProject.git</string>
+		<string>https://github.com/dib258/DomyosProject.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>DomyosProject.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:dib258/DomyosProject.git</string>
+	<string>https://github.com/dib258/DomyosProject.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
