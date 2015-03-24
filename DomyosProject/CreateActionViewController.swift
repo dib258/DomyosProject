@@ -8,8 +8,10 @@
 
 import UIKit
 
-class CreateActionViewController: UIViewController, UITextFieldDelegate {
+class CreateActionViewController: UIViewController {
 
+    let kUnwindSegue: String = "unwind segue"
+    
     @IBOutlet weak var titleTextField: UITextField! {
         didSet {
             titleTextField.delegate = self
@@ -34,16 +36,48 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: - Storyboard Action
+    var ttfObserver: NSObjectProtocol!
+    var detfObserver: NSObjectProtocol!
+    var dutfObserver: NSObjectProtocol!
+    var lastButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         // Do any additional setup after loading the view.
+        observeTextField()
     }
 
+    // Observer for the textFields
+    func observeTextField() {
+        let center = NSNotificationCenter.defaultCenter()
+        let queue = NSOperationQueue.mainQueue()
+        
+        ttfObserver = center.addObserverForName(UITextFieldTextDidChangeNotification, object: titleTextField, queue: queue) { notification in
+            if let action = self.action {
+                action.title = self.titleTextField.text
+            }
+        }
+        
+        detfObserver = center.addObserverForName(UITextFieldTextDidChangeNotification, object: descriptionTextField, queue: queue) { notification in
+            if let action = self.action {
+                action.description = self.descriptionTextField.text
+            }
+        }
+        
+        dutfObserver = center.addObserverForName(UITextFieldTextDidChangeNotification, object: dureeTextField, queue: queue) { notification in
+            if let action = self.action {
+                // TODO: check and force to put an int
+                // Maybe an alert to slide sec, min, hours
+                action.duration = self.dureeTextField.text.toInt()!
+            }
+        }
+        
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        observeTextField()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -84,41 +118,6 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: - Storyboard Action
-    
-    var ttfObserver: NSObjectProtocol?
-    var detfObserver: NSObjectProtocol?
-    var dutfObserver: NSObjectProtocol?
-    
-    // Observer for the textFields
-    func observeTextField() {
-        let center = NSNotificationCenter.defaultCenter()
-        let queue = NSOperationQueue.mainQueue()
-        
-        ttfObserver = center.addObserverForName(UITextFieldTextDidChangeNotification, object: titleTextField, queue: queue) { notification in
-            if let action = self.action {
-                action.title = self.titleTextField.text
-            }
-        }
-        
-        detfObserver = center.addObserverForName(UITextFieldTextDidChangeNotification, object: descriptionTextField, queue: queue) { notification in
-            if let action = self.action {
-                action.description = self.descriptionTextField.text
-            }
-        }
-        
-        dutfObserver = center.addObserverForName(UITextFieldTextDidChangeNotification, object: dureeTextField, queue: queue) { notification in
-            if let action = self.action {
-                // TODO: check and force to put an int
-                // Maybe an alert to slide sec, min, hours
-                action.duration = self.dureeTextField.text.toInt()!
-            }
-        }
-        
-    }
-    
-    var lastButton: UIButton?
-    
     func setBorderColor(button: UIButton) {
         if lastButton != nil {
             lastButton?.layer.borderWidth = 0
@@ -133,44 +132,22 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
         lastButton = button
     }
     
+    // MARK: - Actions
+    
     @IBAction func selectColor(sender: UIButton) {
         setBorderColor(sender)
         
         if let text = sender.titleLabel?.text {
             switch text {
-                case "Rouge" : action?.color = UIColor.redColor()
-                case "Bleu" : action?.color = UIColor.blueColor()
-                case "Jaune" : action?.color = UIColor.yellowColor()
-                case "Vert" : action?.color = UIColor.greenColor()
-                case "Blanc" : action?.color = UIColor.whiteColor()
-                default : action?.color = UIColor.whiteColor()
+            case "Rouge" : action?.color = UIColor.redColor()
+            case "Bleu" : action?.color = UIColor.blueColor()
+            case "Jaune" : action?.color = UIColor.yellowColor()
+            case "Vert" : action?.color = UIColor.greenColor()
+            case "Blanc" : action?.color = UIColor.whiteColor()
+            default : action?.color = UIColor.whiteColor()
             }
         }
     }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-//        println("Tag of the textfield \(textField.tag)")
-//        
-//        switch textField.tag {
-//            case 1 : // Title
-//                action?.title = textField.text
-//            case 2 : // Description
-//                action?.description = textField.text
-//            case 3 : // Duree
-//                if let duration = textField.text.toInt() {
-//                    action?.duration = textField.text.toInt()!
-//                } else {
-//                    action?.duration = 0
-//                }
-//            
-//            default : break
-//        }
-        
-        return true
-    }
-    
     @IBAction func confirmerButton(sender: AnyObject) {
         
     }
@@ -181,18 +158,38 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.unwindSegue {
+        if segue.identifier == kUnwindSegue {
             if let unwoundToMVC = segue.destinationViewController as? CreateExerciceTableViewController {
                 unwoundToMVC.createNewAction(segue)
             }
         }
     }
-    
-    private struct Constants {
-        static let unwindSegue: String = "unwind segue"
-    }
+}
 
+
+extension CreateActionViewController: UITextFieldDelegate  {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        //        println("Tag of the textfield \(textField.tag)")
+        //
+        //        switch textField.tag {
+        //            case 1 : // Title
+        //                action?.title = textField.text
+        //            case 2 : // Description
+        //                action?.description = textField.text
+        //            case 3 : // Duree
+        //                if let duration = textField.text.toInt() {
+        //                    action?.duration = textField.text.toInt()!
+        //                } else {
+        //                    action?.duration = 0
+        //                }
+        //            
+        //            default : break
+        //        }
+        
+        return true
+    }
 }
