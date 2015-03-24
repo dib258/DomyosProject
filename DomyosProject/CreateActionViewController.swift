@@ -46,7 +46,6 @@ class CreateActionViewController: UIViewController {
         super.viewDidLoad()
         updateUI()
         // Do any additional setup after loading the view.
-        observeTextField()
     }
 
     // Observer for the textFields
@@ -78,6 +77,7 @@ class CreateActionViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        observeTextField()
     }
     
     override func viewWillDisappear(animated: Bool) {
