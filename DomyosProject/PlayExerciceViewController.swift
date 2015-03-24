@@ -100,6 +100,10 @@ class PlayExerciceViewController: UIViewController {
             if !actions.isEmpty {
                 id_current = 0
                 currentAction = actions[id_current]
+                
+                titleLabel.text = currentAction!.title
+                descriptionLabel.text = currentAction!.description
+                self.view.backgroundColor = currentAction!.color
             }
         }
     }
@@ -107,9 +111,8 @@ class PlayExerciceViewController: UIViewController {
     func getNextActionExercice() {
         if let actions = exercice?.actions {
             if !actions.isEmpty {
-                if id_current < actions.count {
-                    currentAction = actions[id_current]
-                    id_current++
+                if id_current+1 < actions.count {
+                    currentAction = actions[++id_current]
                     
                     counter = 0
                     titleLabel.text = currentAction!.title
@@ -133,6 +136,22 @@ class PlayExerciceViewController: UIViewController {
 
         if exercice != nil {
             self.title = exercice!.title
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if isCounting == true {
+            timer.invalidate()
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if isCounting == true {
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
         }
     }
 }
