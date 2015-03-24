@@ -63,6 +63,7 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // Update of the UI and set textField value
     func updateUI() {
         if action?.title == "" {
             titleTextField?.placeholder = "Titre de l'exercice"
@@ -89,9 +90,11 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
     var detfObserver: NSObjectProtocol?
     var dutfObserver: NSObjectProtocol?
     
+    // Observer for the textFields
     func observeTextField() {
         let center = NSNotificationCenter.defaultCenter()
         let queue = NSOperationQueue.mainQueue()
+        
         ttfObserver = center.addObserverForName(UITextFieldTextDidChangeNotification, object: titleTextField, queue: queue) { notification in
             if let action = self.action {
                 action.title = self.titleTextField.text
@@ -114,11 +117,24 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    var lastButton: UIButton?
+    
+    func setBorderColor(button: UIButton) {
+        if lastButton != nil {
+            lastButton?.layer.borderWidth = 0
+            lastButton?.layer.borderColor = UIColor.clearColor().CGColor
+        }
+        
+        button.backgroundColor = UIColor.clearColor()
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.grayColor().CGColor
+        
+        lastButton = button
+    }
+    
     @IBAction func selectColor(sender: UIButton) {
-        sender.backgroundColor = UIColor.clearColor()
-        sender.layer.cornerRadius = 5
-        sender.layer.borderWidth = 1
-        sender.layer.borderColor = UIColor.blackColor().CGColor
+        setBorderColor(sender)
         
         if let text = sender.titleLabel?.text {
             switch text {
