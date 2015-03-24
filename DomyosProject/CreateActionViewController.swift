@@ -10,7 +10,7 @@ import UIKit
 
 class CreateActionViewController: UIViewController, UITextFieldDelegate {
 
-    var action: ActionExercice?
+    var action: ActionExercice = ActionExercice()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +28,12 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
     @IBAction func selectColor(sender: UIButton) {
         if let text = sender.titleLabel?.text {
             switch text {
-                case "Rouge" : action?.color = UIColor.redColor()
-                case "Bleu" : action?.color = UIColor.blueColor()
-                case "Jaune" : action?.color = UIColor.yellowColor()
-                case "Vert" : action?.color = UIColor.greenColor()
-                case "Blanc" : action?.color = UIColor.whiteColor()
-                default : action?.color = UIColor.whiteColor()
+                case "Rouge" : action.color = UIColor.redColor()
+                case "Bleu" : action.color = UIColor.blueColor()
+                case "Jaune" : action.color = UIColor.yellowColor()
+                case "Vert" : action.color = UIColor.greenColor()
+                case "Blanc" : action.color = UIColor.whiteColor()
+                default : action.color = UIColor.whiteColor()
             }
         }
     }
@@ -63,14 +63,14 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
         
         switch textField.tag {
             case 1 : // Title
-                action?.title = textField.text
+                action.title = textField.text
             case 2 : // Description
-                action?.description = textField.text
+                action.description = textField.text
             case 3 : // Duree
                 if let duration = textField.text.toInt() {
-                    action?.duration = textField.text.toInt()!
+                    action.duration = textField.text.toInt()!
                 } else {
-                    action?.duration = 0
+                    action.duration = 0
                 }
             
             default : break
@@ -78,15 +78,29 @@ class CreateActionViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-
-    /*
+    
+    @IBAction func confirmerButton(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func annulerButton(sender: AnyObject) {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.unwindSegue {
+            if let unwoundToMVC = segue.destinationViewController as? CreateExerciceTableViewController {
+                unwoundToMVC.createNewAction(segue)
+            }
+        }
     }
-    */
+    
+    private struct Constants {
+        static let unwindSegue: String = "unwind segue"
+    }
 
 }

@@ -49,7 +49,7 @@
                     <navigationItem key="navigationItem" title="Nouvel Exercice" id="Idh-XS-U2X">
                         <barButtonItem key="rightBarButtonItem" title="Ajouter étape" id="geD-jT-98K">
                             <connections>
-                                <segue destination="L59-UO-19T" kind="show" identifier="CreateNewStep" id="j4D-oJ-s2Q"/>
+                                <segue destination="VKj-np-ZIU" kind="presentation" identifier="CreateNewStep" id="j4D-oJ-s2Q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -61,7 +61,7 @@
             </objects>
             <point key="canvasLocation" x="1593" y="-189"/>
         </scene>
-        <!--Create Action View Controller-->
+        <!--Nouvel Action-->
         <scene sceneID="NXf-d8-ZEP">
             <objects>
                 <viewController id="L59-UO-19T" customClass="CreateActionViewController" customModule="DomyosProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -197,6 +197,18 @@
                             <constraint firstItem="LGc-ts-VWy" firstAttribute="leading" secondItem="EwC-LO-jiQ" secondAttribute="trailing" constant="8" symbolic="YES" id="xD0-co-olD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Nouvel Action" id="VE7-tg-S5B">
+                        <barButtonItem key="leftBarButtonItem" title="Annuler" id="Kwo-Qu-1dg">
+                            <connections>
+                                <action selector="annulerButton:" destination="L59-UO-19T" id="vMt-ft-RAN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Confirmer" id="OGE-yo-3nf">
+                            <connections>
+                                <segue destination="6Dh-g0-nyf" kind="unwind" identifier="unwind segue" unwindAction="createNewAction:" id="QfL-Ud-NIq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="1L6-GT-IO4" id="9Yx-MW-9wi"/>
                         <outlet property="dureeTextField" destination="eI5-jx-1OH" id="Tv2-H3-h8f"/>
@@ -204,8 +216,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfs-Sf-06t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6Dh-g0-nyf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2353" y="-189"/>
+            <point key="canvasLocation" x="3165" y="-189"/>
         </scene>
         <!--Mes Exercices-->
         <scene sceneID="vDK-HR-uUJ">
@@ -411,6 +424,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3S-yQ-5ZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1577" y="551"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xId-IK-vIf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VKj-np-ZIU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tgn-jI-7nX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="L59-UO-19T" kind="relationship" relationship="rootViewController" id="7jv-hU-KLy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nju-mL-QgC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2353" y="-189"/>
         </scene>
     </scenes>
 </document>

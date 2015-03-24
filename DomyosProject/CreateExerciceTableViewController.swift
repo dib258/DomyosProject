@@ -52,17 +52,35 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
         return true
     }
     
+    @IBAction func createNewAction(segue: UIStoryboardSegue) {
+        println("someone unwound back to me")
+        if segue.identifier == Constants.UnwoundedSegue {
+            if let svc = segue.sourceViewController as? CreateActionViewController {
+                if exercice?.actions.last !== svc.action {
+                    exercice?.actions.append(svc.action)
+                }
+            }
+        }
+
+    }
+    
     // MARK: - Navigation
+    
+    private struct Constants {
+        static let NextStepSegue: String = "CreateNewStep"
+        static let UnwoundedSegue: String = "unwind segue"
+    }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let cavc = segue.destinationViewController as? CreateActionViewController {
-            if segue.identifier == "CreateNewStep" {
-                let action = ActionExercice()
+        if segue.identifier == Constants.NextStepSegue {
+            if let cavc = segue.destinationViewController.contentViewController as? CreateActionViewController {
 
-                cavc.action = action
+//                let action = ActionExercice()
+//
+//                cavc.action = action
                 
-                exercice?.actions.append(action)
+//                exercice?.actions.append(action)
             }
         }
     }
@@ -131,4 +149,14 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     }
     */
 
+}
+
+extension UIViewController {
+    var contentViewController: UIViewController {
+        if let navcon = self as? UINavigationController {
+            return navcon.visibleViewController
+        } else {
+            return self
+        }
+    }
 }
