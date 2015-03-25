@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vq9-8n-6Iv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vq9-8n-6Iv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -49,7 +49,7 @@
                     <navigationItem key="navigationItem" title="Nouvel Exercice" id="Idh-XS-U2X">
                         <barButtonItem key="rightBarButtonItem" title="Ajouter étape" id="geD-jT-98K">
                             <connections>
-                                <segue destination="VKj-np-ZIU" kind="presentation" identifier="CreateNewStep" id="j4D-oJ-s2Q"/>
+                                <segue destination="L59-UO-19T" kind="show" identifier="CreateNewStep" id="6k2-AZ-WZo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -230,7 +230,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfs-Sf-06t" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Dh-g0-nyf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3179" y="-178"/>
+            <point key="canvasLocation" x="2300" y="-163"/>
         </scene>
         <!--Mes Exercices-->
         <scene sceneID="vDK-HR-uUJ">
@@ -261,7 +261,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="71T-Mt-wgC" kind="show" identifier="playExercice" id="rcq-S0-hpr"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="playExercice" id="vbf-AF-4TK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -399,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2389" y="551"/>
+            <point key="canvasLocation" x="1542" y="581"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Nj-Gy-fvp">
@@ -418,42 +418,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZH-5p-avh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23" y="185"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Cuk-9c-nq1">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="71T-Mt-wgC" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Kc-CJ-Ao0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Z87-sC-NoF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C3S-yQ-5ZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1577" y="551"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xId-IK-vIf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VKj-np-ZIU" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tgn-jI-7nX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="L59-UO-19T" kind="relationship" relationship="rootViewController" id="7jv-hU-KLy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nju-mL-QgC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2353" y="-189"/>
         </scene>
     </scenes>
 </document>
