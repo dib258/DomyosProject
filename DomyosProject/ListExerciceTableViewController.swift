@@ -30,9 +30,11 @@ class ListExerciceTableViewController: UITableViewController {
     @IBAction func createNewExercice(segue: UIStoryboardSegue) {
         if segue.identifier == Constants.UnwoundSegueToList {
             if let svc = segue.sourceViewController as? CreateActionViewController {
+                /*
                 if exercice?.actions.last !== svc.action {
                     exercice?.actions.append(svc.action!)
                 }
+                    */
             }
         }
     }
