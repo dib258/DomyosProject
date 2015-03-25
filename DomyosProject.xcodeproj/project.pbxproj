@@ -11,7 +11,6 @@
 		93136D8A1ABC4F240034CC25 /* CreateExerciceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93136D891ABC4F240034CC25 /* CreateExerciceTableViewController.swift */; };
 		93136D8C1ABC4F840034CC25 /* ListExerciceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93136D8B1ABC4F840034CC25 /* ListExerciceTableViewController.swift */; };
 		935FBA651ABDB4CB00EB56B8 /* CreateActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */; };
-		9364FF341AAF377D0025569F /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9364FF331AAF377D0025569F /* Default-Landscape@2x.png */; };
 		938BD5881AC2D0B300AA42ED /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 938BD5871AC2D0B300AA42ED /* Podfile */; };
 		93D420741AADDC800096EFA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420731AADDC800096EFA1 /* AppDelegate.swift */; };
 		93D420761AADDC800096EFA1 /* PlayExerciceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D420751AADDC800096EFA1 /* PlayExerciceViewController.swift */; };
@@ -37,7 +36,6 @@
 		93136D891ABC4F240034CC25 /* CreateExerciceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateExerciceTableViewController.swift; sourceTree = "<group>"; };
 		93136D8B1ABC4F840034CC25 /* ListExerciceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListExerciceTableViewController.swift; sourceTree = "<group>"; };
 		935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateActionViewController.swift; sourceTree = "<group>"; };
-		9364FF331AAF377D0025569F /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		938BD5871AC2D0B300AA42ED /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		93D4206E1AADDC800096EFA1 /* DomyosProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DomyosProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D420721AADDC800096EFA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				938BD5871AC2D0B300AA42ED /* Podfile */,
-				9364FF331AAF377D0025569F /* Default-Landscape@2x.png */,
 				93D420701AADDC800096EFA1 /* DomyosProject */,
 				93D420861AADDC800096EFA1 /* DomyosProjectTests */,
 				93D4206F1AADDC800096EFA1 /* Products */,
@@ -105,8 +102,8 @@
 				93D420751AADDC800096EFA1 /* PlayExerciceViewController.swift */,
 				93D420771AADDC800096EFA1 /* Main.storyboard */,
 				93136D8B1ABC4F840034CC25 /* ListExerciceTableViewController.swift */,
-				935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */,
 				93136D891ABC4F240034CC25 /* CreateExerciceTableViewController.swift */,
+				935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */,
 				93D420711AADDC800096EFA1 /* Supporting Files */,
 			);
 			path = DomyosProject;
@@ -232,7 +229,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				93D420791AADDC800096EFA1 /* Main.storyboard in Resources */,
-				9364FF341AAF377D0025569F /* Default-Landscape@2x.png in Resources */,
 				938BD5881AC2D0B300AA42ED /* Podfile in Resources */,
 				93D4207B1AADDC800096EFA1 /* Images.xcassets in Resources */,
 			);

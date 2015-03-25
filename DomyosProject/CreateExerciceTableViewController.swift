@@ -80,7 +80,6 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
                 }
             }
         }
-
     }
     
     // MARK: - Navigation
