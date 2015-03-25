@@ -27,21 +27,28 @@ class ListExerciceTableViewController: UITableViewController {
 
     // MARK: - Segue
     
+    @IBAction func createNewExercice(segue: UIStoryboardSegue) {
+        if segue.identifier == Constants.UnwoundSegueToList {
+            if let svc = segue.sourceViewController as? CreateActionViewController {
+                /*
+                if exercice?.actions.last !== svc.action {
+                    exercice?.actions.append(svc.action!)
+                }
+                    */
+            }
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let cetvc = segue.destinationViewController as? CreateExerciceTableViewController {
+        if let cetvc = segue.destinationViewController.contentViewController as? CreateExerciceTableViewController {
             if segue.identifier == Constants.CreateNewExerciceSegue {
-                let newExercice = Exercice()
-            
-                cetvc.exercice = newExercice
-                
-                exercices.append(newExercice)
+                cetvc.exercice = Exercice()
             }
         }
         
         if let evc = segue.destinationViewController.contentViewController as? PlayExerciceViewController {
             if segue.identifier == Constants.PlayExerciceSegue {
                 if let exerciceIndex = tableView.indexPathForSelectedRow()?.row {
-                    println(" index : \(exerciceIndex)")
                     evc.exercice = exercices[exerciceIndex]
                 }
             }
@@ -67,6 +74,7 @@ class ListExerciceTableViewController: UITableViewController {
         static let CellReuseIdentifier = "Exercice"
         static let CreateNewExerciceSegue = "CreateNewExercice"
         static let PlayExerciceSegue = "playExercice"
+        static let UnwoundSegueToList = "UnwindSegueToList"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
