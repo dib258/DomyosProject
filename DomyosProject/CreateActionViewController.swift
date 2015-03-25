@@ -140,16 +140,34 @@ class CreateActionViewController: UIViewController {
             dureeTextField?.text = "\(action!.duration)"
         }
         
-//        switch action?.color {
-//            case UIColor.redColor(): setBorderColor(rougeButton)
-//            case UIColor.blueColor(): setBorderColor(bleuButton)
-//            case UIColor.yellowColor(): setBorderColor(jauneButton)
-//            case UIColor.greenColor(): setBorderColor(vertButton)
-//            case UIColor.whiteColor(): setBorderColor(blancButton)
-//            default:
-//                setBorderColor(blancButton)
-//                action?.color = UIColor.whiteColor()
-//        }
+        if let colorUnwrapped = action?.color {
+            switch colorUnwrapped {
+                case UIColor.redColor():
+                    if let rouge = rougeButton {
+                        setBorderColor(rougeButton)
+                    }
+                case UIColor.blueColor():
+                    if let bleu = bleuButton  {
+                        setBorderColor(bleuButton)
+                    }
+                case UIColor.yellowColor():
+                    if let jaune = jauneButton {
+                        setBorderColor(jauneButton)
+                    }
+                case UIColor.greenColor():
+                    if let vert = vertButton {
+                        setBorderColor(vertButton)
+                    }
+                case UIColor.whiteColor():
+                    if let blanc = blancButton {
+                        setBorderColor(blanc)
+                    }
+                
+                default:
+                    setBorderColor(blancButton)
+                    action?.color = UIColor.whiteColor()
+            }
+        }
     }
     
     func setBorderColor(button: UIButton) {
