@@ -75,12 +75,13 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     @IBAction func createNewAction(segue: UIStoryboardSegue) {
         if segue.identifier == Constants.UnwoundedSegue {
             if let svc = segue.sourceViewController as? CreateActionViewController {
-                if exercice?.actions.last !== svc.action {
-                    exercice?.actions.append(svc.action!)
+                if svc.isModified == false {
+                    if exercice?.actions.last !== svc.action {
+                        exercice?.actions.append(svc.action!)
+                    }
                 }
             }
         }
-
     }
     
     // MARK: - Navigation
@@ -88,6 +89,7 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     private struct Constants {
         static let NextStepSegue: String = "CreateNewStep"
         static let UnwoundedSegue: String = "unwind segue"
+        static let ModifyStepSegue: String = "ModifyStep"
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -95,6 +97,13 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
         if segue.identifier == Constants.NextStepSegue {
             if let cavc = segue.destinationViewController.contentViewController as? CreateActionViewController {
                 cavc.action = ActionExercice()
+            }
+        } else if segue.identifier == Constants.ModifyStepSegue {
+            if let cavc = segue.destinationViewController.contentViewController as? CreateActionViewController {
+                if let actionIndex = tableView.indexPathForSelectedRow()?.row {
+                    cavc.isModified = true
+                    cavc.action = exercice?.actions[actionIndex]
+                }
             }
         }
     }

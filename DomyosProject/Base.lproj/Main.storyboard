@@ -39,6 +39,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="VKj-np-ZIU" kind="presentation" identifier="ModifyStep" id="qAB-pb-yrx"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -222,9 +225,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="blancButton" destination="LGc-ts-VWy" id="EUW-bU-W13"/>
+                        <outlet property="bleuButton" destination="xzp-Er-QKG" id="F4Y-EE-104"/>
                         <outlet property="descriptionTextField" destination="1L6-GT-IO4" id="9Yx-MW-9wi"/>
                         <outlet property="dureeTextField" destination="eI5-jx-1OH" id="Tv2-H3-h8f"/>
+                        <outlet property="jauneButton" destination="oH8-DM-LZ5" id="MS8-Bt-9mg"/>
+                        <outlet property="rougeButton" destination="YKi-iP-fAh" id="D13-hV-7Yl"/>
                         <outlet property="titleTextField" destination="01N-NK-0xX" id="CtY-wk-Ubf"/>
+                        <outlet property="vertButton" destination="EwC-LO-jiQ" id="YYD-fy-bjW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfs-Sf-06t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -456,4 +464,7 @@
             <point key="canvasLocation" x="2353" y="-189"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="j4D-oJ-s2Q"/>
+    </inferredMetricsTieBreakers>
 </document>
