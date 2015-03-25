@@ -132,7 +132,7 @@ class PlayExerciceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Default-Landscape@2x.png")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
 
         if exercice != nil {
             self.title = exercice!.title
