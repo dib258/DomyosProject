@@ -10,7 +10,17 @@ import UIKit
 
 class CreateActionViewController: UIViewController {
 
-    let kUnwindSegue: String = "unwind segue"
+    private struct Constants {
+        static let UnwindeSegue: String = "unwind segue"
+        static let TitlePlaceHolder: String = "Titre de l'exercice"
+        static let DescriptionPlaceHolder: String = "Description de l'exercice"
+        static let DurationPlaceHolder: String = "Duree en seconde de l'exercice"
+        static let Rouge: String = "Rouge"
+        static let Bleu: String = "Bleu"
+        static let Vert: String = "Vert"
+        static let Jaune: String = "Jaune"
+        static let Blanc: String = "Blanc"
+    }
     
     @IBOutlet weak var titleTextField: UITextField! {
         didSet {
@@ -30,23 +40,57 @@ class CreateActionViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var bleuButton: UIButton!
+    @IBOutlet weak var jauneButton: UIButton!
+    @IBOutlet weak var blancButton: UIButton!
+    @IBOutlet weak var rougeButton: UIButton!
+    @IBOutlet weak var vertButton: UIButton!
+    
+    
     var action: ActionExercice? {
         didSet {
             updateUI()
         }
     }
     
-    // MARK: - Storyboard Action
+
     var ttfObserver: NSObjectProtocol!
     var detfObserver: NSObjectProtocol!
     var dutfObserver: NSObjectProtocol!
     var lastButton: UIButton!
+    var isModified = false
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        observeTextField()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let observer = ttfObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(observer)
+        }
+        
+        if let observer = detfObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(observer)
+        }
+        
+        if let observer = dutfObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(observer)
+        }
+        
+    }
+    
+    // MARK: - Storyboard Action
 
     // Observer for the textFields
     func observeTextField() {
@@ -76,46 +120,53 @@ class CreateActionViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        observeTextField()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if let observer = ttfObserver {
-            NSNotificationCenter.defaultCenter().removeObserver(observer)
-        }
-        
-        if let observer = detfObserver {
-            NSNotificationCenter.defaultCenter().removeObserver(observer)
-        }
-        
-        if let observer = dutfObserver {
-            NSNotificationCenter.defaultCenter().removeObserver(observer)
-        }
-        
-    }
-    
     // Update of the UI and set textField value
     func updateUI() {
         if action?.title == "" {
-            titleTextField?.placeholder = "Titre de l'exercice"
+            titleTextField?.placeholder = Constants.TitlePlaceHolder
         } else {
             titleTextField?.text = action?.title
         }
         
         if action?.description == "" {
-            descriptionTextField?.placeholder = "Description de l'exercice"
+            descriptionTextField?.placeholder = Constants.DescriptionPlaceHolder
         } else {
             descriptionTextField?.text = action?.description
         }
         
         if action?.duration == 0 {
-            dureeTextField?.placeholder = "Duree en seconde de l'exercice"
+            dureeTextField?.placeholder = Constants.DurationPlaceHolder
         } else {
-            dureeTextField?.text = "\(action?.duration)"
+            dureeTextField?.text = "\(action!.duration)"
+        }
+        
+        if let colorUnwrapped = action?.color {
+            switch colorUnwrapped {
+                case UIColor.redColor():
+                    if let rouge = rougeButton {
+                        setBorderColor(rougeButton)
+                    }
+                case UIColor.blueColor():
+                    if let bleu = bleuButton  {
+                        setBorderColor(bleuButton)
+                    }
+                case UIColor.yellowColor():
+                    if let jaune = jauneButton {
+                        setBorderColor(jauneButton)
+                    }
+                case UIColor.greenColor():
+                    if let vert = vertButton {
+                        setBorderColor(vertButton)
+                    }
+                case UIColor.whiteColor():
+                    if let blanc = blancButton {
+                        setBorderColor(blanc)
+                    }
+                
+                default:
+                    setBorderColor(blancButton)
+                    action?.color = UIColor.whiteColor()
+            }
         }
     }
     
@@ -140,15 +191,16 @@ class CreateActionViewController: UIViewController {
         
         if let text = sender.titleLabel?.text {
             switch text {
-            case "Rouge" : action?.color = UIColor.redColor()
-            case "Bleu" : action?.color = UIColor.blueColor()
-            case "Jaune" : action?.color = UIColor.yellowColor()
-            case "Vert" : action?.color = UIColor.greenColor()
-            case "Blanc" : action?.color = UIColor.whiteColor()
+            case Constants.Rouge : action?.color = UIColor.redColor()
+            case Constants.Bleu : action?.color = UIColor.blueColor()
+            case Constants.Jaune : action?.color = UIColor.yellowColor()
+            case Constants.Vert : action?.color = UIColor.greenColor()
+            case Constants.Blanc : action?.color = UIColor.whiteColor()
             default : action?.color = UIColor.whiteColor()
             }
         }
     }
+    
     @IBAction func confirmerButton(sender: AnyObject) {
         
     }
@@ -159,9 +211,9 @@ class CreateActionViewController: UIViewController {
     
     
     // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == kUnwindSegue {
+        if segue.identifier == Constants.UnwindeSegue {
             if let unwoundToMVC = segue.destinationViewController as? CreateExerciceTableViewController {
                 unwoundToMVC.createNewAction(segue)
             }
@@ -173,23 +225,6 @@ class CreateActionViewController: UIViewController {
 extension CreateActionViewController: UITextFieldDelegate  {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
-        //        println("Tag of the textfield \(textField.tag)")
-        //
-        //        switch textField.tag {
-        //            case 1 : // Title
-        //                action?.title = textField.text
-        //            case 2 : // Description
-        //                action?.description = textField.text
-        //            case 3 : // Duree
-        //                if let duration = textField.text.toInt() {
-        //                    action?.duration = textField.text.toInt()!
-        //                } else {
-        //                    action?.duration = 0
-        //                }
-        //            
-        //            default : break
-        //        }
         
         return true
     }

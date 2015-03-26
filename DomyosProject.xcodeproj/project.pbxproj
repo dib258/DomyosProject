@@ -99,8 +99,8 @@
 		93D420701AADDC800096EFA1 /* DomyosProject */ = {
 			isa = PBXGroup;
 			children = (
-				93D420751AADDC800096EFA1 /* PlayExerciceViewController.swift */,
 				93D420771AADDC800096EFA1 /* Main.storyboard */,
+				93D420751AADDC800096EFA1 /* PlayExerciceViewController.swift */,
 				93136D8B1ABC4F840034CC25 /* ListExerciceTableViewController.swift */,
 				93136D891ABC4F240034CC25 /* CreateExerciceTableViewController.swift */,
 				935FBA641ABDB4CB00EB56B8 /* CreateActionViewController.swift */,

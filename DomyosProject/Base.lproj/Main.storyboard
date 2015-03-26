@@ -39,6 +39,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="VKj-np-ZIU" kind="presentation" identifier="ModifyStep" id="qAB-pb-yrx"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -169,7 +172,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANi-Op-4NW">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -222,9 +225,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="blancButton" destination="LGc-ts-VWy" id="EUW-bU-W13"/>
+                        <outlet property="bleuButton" destination="xzp-Er-QKG" id="F4Y-EE-104"/>
                         <outlet property="descriptionTextField" destination="1L6-GT-IO4" id="9Yx-MW-9wi"/>
                         <outlet property="dureeTextField" destination="eI5-jx-1OH" id="Tv2-H3-h8f"/>
+                        <outlet property="jauneButton" destination="oH8-DM-LZ5" id="MS8-Bt-9mg"/>
+                        <outlet property="rougeButton" destination="YKi-iP-fAh" id="D13-hV-7Yl"/>
                         <outlet property="titleTextField" destination="01N-NK-0xX" id="CtY-wk-Ubf"/>
+                        <outlet property="vertButton" destination="EwC-LO-jiQ" id="YYD-fy-bjW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfs-Sf-06t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,12 +310,12 @@
                                             <action selector="playButton:" destination="BYZ-38-t0r" id="ueu-gH-bVH"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AwY-1T-ZNK"/>
                                     <barButtonItem systemItem="pause" id="3Yf-4p-G6K">
                                         <connections>
                                             <action selector="pauseButton:" destination="BYZ-38-t0r" id="cls-So-h2C"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AwY-1T-ZNK"/>
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and then" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNR-09-qXA">
@@ -420,4 +428,7 @@
             <point key="canvasLocation" x="-23" y="185"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="j4D-oJ-s2Q"/>
+    </inferredMetricsTieBreakers>
 </document>
