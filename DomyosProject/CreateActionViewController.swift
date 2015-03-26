@@ -11,7 +11,6 @@ import UIKit
 class CreateActionViewController: UIViewController {
 
     private struct Constants {
-        //static let UnwindeSegue: String = "UnwindSegueToAction"
         static let TitlePlaceHolder: String = "Titre de l'exercice"
         static let DescriptionPlaceHolder: String = "Description de l'exercice"
         static let DurationPlaceHolder: String = "Duree en seconde de l'exercice"
@@ -65,7 +64,6 @@ class CreateActionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -142,13 +140,10 @@ class CreateActionViewController: UIViewController {
         }
         
         if let colorUnwrapped = action?.color {
-            println("une couleur existe")
             switch colorUnwrapped {
                 case UIColor.redColor():
                     if let rouge = rougeButton {
                         setBorderColor(rougeButton)
-                    } else {
-                        println("Button not initialized yet")
                     }
                 case UIColor.blueColor():
                     if let bleu = bleuButton  {
@@ -171,11 +166,10 @@ class CreateActionViewController: UIViewController {
                     setBorderColor(blancButton)
                     action?.color = UIColor.whiteColor()
             }
-        } else {
-            println("pas de couleur")
         }
     }
     
+    // Set a border on the selected UIButton
     func setBorderColor(button: UIButton) {
         if lastButton != nil {
             lastButton?.layer.borderWidth = 0
@@ -192,6 +186,7 @@ class CreateActionViewController: UIViewController {
     
     // MARK: - Actions
     
+    // Func that set the color to the action when a Button is pressed
     @IBAction func selectColor(sender: UIButton) {
         setBorderColor(sender)
         
@@ -207,20 +202,10 @@ class CreateActionViewController: UIViewController {
         }
     }
     
+    // Pop of the current MVC if the creation is canceled
     @IBAction func annulerButton(sender: AnyObject) {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    
-//    // MARK: - Navigation
-//
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == Constants.UnwindeSegue {
-//            if let unwoundToMVC = segue.destinationViewController as? CreateExerciceTableViewController {
-//                unwoundToMVC.createNewAction(segue)
-//            }
-//        }
-//    }
 }
 
 

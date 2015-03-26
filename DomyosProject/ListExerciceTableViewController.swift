@@ -9,7 +9,14 @@
 import UIKit
 
 class ListExerciceTableViewController: UITableViewController {
-
+    
+    private struct Constants {
+        static let CellReuseIdentifier = "Exercice"
+        static let CreateNewExerciceSegue = "CreateNewExercice"
+        static let PlayExerciceSegue = "playExercice"
+        static let UnwoundSegueToList = "UnwindSegueToList"
+    }
+    
     var exercices = [Exercice]()
     
     // MARK: - Lifecycle
@@ -57,22 +64,11 @@ class ListExerciceTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         return exercices.count
-    }
-
-    private struct Constants {
-        static let CellReuseIdentifier = "Exercice"
-        static let CreateNewExerciceSegue = "CreateNewExercice"
-        static let PlayExerciceSegue = "playExercice"
-        static let UnwoundSegueToList = "UnwindSegueToList"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -87,7 +83,6 @@ class ListExerciceTableViewController: UITableViewController {
 
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
         return true
     }
     
@@ -103,6 +98,9 @@ class ListExerciceTableViewController: UITableViewController {
     }
 }
 
+// MARK: Model class
+
+// Class that contains informations for the actions
 class ActionExercice {
     var duration : Int = 0
     var title : String = ""
@@ -110,9 +108,11 @@ class ActionExercice {
     var color : UIColor = UIColor.whiteColor()
 }
 
+// Class that represent the exercice
 class Exercice {
     var title: String = ""
     var actions: [ActionExercice] = [ActionExercice]()
+    // Computed property to calcul the sum of the duration of the Actions
     var duration: Int {
         get {
             var duree = 0

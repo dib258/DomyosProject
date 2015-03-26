@@ -9,27 +9,24 @@
 import UIKit
 
 class CreateExerciceTableViewController: UITableViewController, UITextFieldDelegate {
+    private struct Constants {
+        static let NextStepSegue: String = "CreateNewStep"
+        static let UnwoundedSegueToExercice: String = "UnwindSegueToExercice"
+        static let ModifyStepSegue: String = "ModifyStep"
+        static let CellReuseIdentifier = "Action"
+        static let titlePlaceHolder = "Nom de votre Exercice"
+    }
     
     var exercice: Exercice?
     
     @IBOutlet weak var titleTextField: UITextField! {
         didSet {
             titleTextField.delegate = self
-            titleTextField.placeholder = "Nom de votre Exercice"
+            titleTextField.placeholder = Constants.titlePlaceHolder
         }
     }
 
     // MARK: - LifeCycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,12 +37,14 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Start observing change in the TextField
         observeTextField()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
+        // remove the observer when the view is not on screen
         if let observer = ttfObserver {
             NSNotificationCenter.defaultCenter().removeObserver(observer)
         }
@@ -55,6 +54,7 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     
     var ttfObserver: NSObjectProtocol?
     
+    // Func to observer change in the TextField
     func observeTextField() {
         let center = NSNotificationCenter.defaultCenter()
         let queue = NSOperationQueue.mainQueue()
@@ -66,14 +66,15 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
         }
     }
     
+    // Resign the keyboard when hit the return button
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true
     }
     
+    // Func called from the CreateActionViewController with unwinded segue
     @IBAction func createNewAction(segue: UIStoryboardSegue) {
-        println("le unwind segue est appeller")
         if segue.identifier == Constants.UnwoundedSegueToExercice {
             if let svc = segue.sourceViewController as? CreateActionViewController {
                 if svc.isModified == false {
@@ -86,13 +87,6 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     }
     
     // MARK: - Navigation
-    
-    private struct Constants {
-        static let NextStepSegue: String = "CreateNewStep"
-        static let UnwoundedSegueToExercice: String = "UnwindSegueToExercice"
-//        static let UnwoundedSegueToAction : String = "UnwindSegueToAction"
-        static let ModifyStepSegue: String = "ModifyStep"
-    }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -113,24 +107,15 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        
         return exercice != nil ? exercice!.actions.count : 0
-    }
-
-    private struct Storyboard {
-        static let CellReuseIdentifier = "Action"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
 
         cell.textLabel?.text = exercice?.actions[indexPath.row].title
         cell.detailTextLabel?.text = exercice?.actions[indexPath.row].description
@@ -138,15 +123,10 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
         return cell
     }
     
-
-    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
         return true
     }
-    
-
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -158,6 +138,7 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     }
 }
 
+// Extension to access via segue the next controller event if there is a Navigation Controller between
 extension UIViewController {
     var contentViewController: UIViewController {
         if let navcon = self as? UINavigationController {

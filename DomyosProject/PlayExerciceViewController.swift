@@ -26,7 +26,36 @@ class PlayExerciceViewController: UIViewController {
     var isCounting = false
     var id_current = 0
     var currentAction : ActionExercice?
+    
+    // MARK: Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        
+        if exercice != nil {
+            self.title = exercice!.title
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if isCounting == true {
+            timer.invalidate()
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if isCounting == true {
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        }
+    }
 
+    // MARK: Storyboard actions
     
     @IBAction func clearButton(sender: AnyObject) {
         isCounting = false
@@ -51,6 +80,9 @@ class PlayExerciceViewController: UIViewController {
         
     }
     
+    // MARK: Methods that run the player
+    
+    // Func that transform second to human readable time
     func secondFormatToHours(var newTime: Double) -> String {
         let total_seconds = Int(newTime)
         
@@ -78,6 +110,7 @@ class PlayExerciceViewController: UIViewController {
 
     }
     
+    // Func called each time the timer ticks
     func updateCounter() {
         if let action = currentAction {
             
@@ -87,7 +120,6 @@ class PlayExerciceViewController: UIViewController {
                 getNextActionExercice()
             }
             
-            //timeLabel.text = String(action.Duration - counter)
             timeLabel.text = secondFormatToHours(Double(action.duration - counter))
         } else {
             setFirstAction()
@@ -95,6 +127,7 @@ class PlayExerciceViewController: UIViewController {
         }
     }
     
+    // Func that set the first Action of the exercice
     func setFirstAction() {
         if let actions = exercice?.actions {
             if !actions.isEmpty {
@@ -108,6 +141,7 @@ class PlayExerciceViewController: UIViewController {
         }
     }
     
+    // Func that retrieve the next Action of the exercice
     func getNextActionExercice() {
         if let actions = exercice?.actions {
             if !actions.isEmpty {
@@ -129,31 +163,7 @@ class PlayExerciceViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
 
-        if exercice != nil {
-            self.title = exercice!.title
-        }
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        if isCounting == true {
-            timer.invalidate()
-        }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if isCounting == true {
-            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
-        }
-    }
 }
 
 
