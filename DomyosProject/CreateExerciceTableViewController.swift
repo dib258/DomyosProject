@@ -73,7 +73,8 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     }
     
     @IBAction func createNewAction(segue: UIStoryboardSegue) {
-        if segue.identifier == Constants.UnwoundedSegue {
+        println("le unwind segue est appeller")
+        if segue.identifier == Constants.UnwoundedSegueToExercice {
             if let svc = segue.sourceViewController as? CreateActionViewController {
                 if svc.isModified == false {
                     if exercice?.actions.last !== svc.action {
@@ -88,7 +89,8 @@ class CreateExerciceTableViewController: UITableViewController, UITextFieldDeleg
     
     private struct Constants {
         static let NextStepSegue: String = "CreateNewStep"
-        static let UnwoundedSegue: String = "unwind segue"
+        static let UnwoundedSegueToExercice: String = "UnwindSegueToExercice"
+//        static let UnwoundedSegueToAction : String = "UnwindSegueToAction"
         static let ModifyStepSegue: String = "ModifyStep"
     }
     

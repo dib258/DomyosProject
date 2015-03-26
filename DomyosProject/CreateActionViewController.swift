@@ -11,7 +11,7 @@ import UIKit
 class CreateActionViewController: UIViewController {
 
     private struct Constants {
-        static let UnwindeSegue: String = "unwind segue"
+        //static let UnwindeSegue: String = "UnwindSegueToAction"
         static let TitlePlaceHolder: String = "Titre de l'exercice"
         static let DescriptionPlaceHolder: String = "Description de l'exercice"
         static let DurationPlaceHolder: String = "Duree en seconde de l'exercice"
@@ -122,6 +122,7 @@ class CreateActionViewController: UIViewController {
     
     // Update of the UI and set textField value
     func updateUI() {
+        
         if action?.title == "" {
             titleTextField?.placeholder = Constants.TitlePlaceHolder
         } else {
@@ -141,10 +142,13 @@ class CreateActionViewController: UIViewController {
         }
         
         if let colorUnwrapped = action?.color {
+            println("une couleur existe")
             switch colorUnwrapped {
                 case UIColor.redColor():
                     if let rouge = rougeButton {
                         setBorderColor(rougeButton)
+                    } else {
+                        println("Button not initialized yet")
                     }
                 case UIColor.blueColor():
                     if let bleu = bleuButton  {
@@ -167,6 +171,8 @@ class CreateActionViewController: UIViewController {
                     setBorderColor(blancButton)
                     action?.color = UIColor.whiteColor()
             }
+        } else {
+            println("pas de couleur")
         }
     }
     
@@ -201,24 +207,20 @@ class CreateActionViewController: UIViewController {
         }
     }
     
-    @IBAction func confirmerButton(sender: AnyObject) {
-        
-    }
-    
     @IBAction func annulerButton(sender: AnyObject) {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.UnwindeSegue {
-            if let unwoundToMVC = segue.destinationViewController as? CreateExerciceTableViewController {
-                unwoundToMVC.createNewAction(segue)
-            }
-        }
-    }
+//    // MARK: - Navigation
+//
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == Constants.UnwindeSegue {
+//            if let unwoundToMVC = segue.destinationViewController as? CreateExerciceTableViewController {
+//                unwoundToMVC.createNewAction(segue)
+//            }
+//        }
+//    }
 }
 
 
