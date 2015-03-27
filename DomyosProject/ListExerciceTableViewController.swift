@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ListExerciceTableViewController: UITableViewController {
     
@@ -39,6 +40,21 @@ class ListExerciceTableViewController: UITableViewController {
             if let svc = segue.sourceViewController as? CreateExerciceTableViewController {
                 if exercices.last !== svc.exercice {
                     exercices.append(svc.exercice!)
+                    
+                    
+                    if let title = exercices.last?.title {
+                        // TODO: Alamofire send the new exercice on the database
+                        Alamofire.request(.POST, "http://258labs.be/others/domyos/set.php", parameters: ["title": title]).responseJSON {
+                            (request, response, data, error) in
+                            
+                            println(request)
+                            println(response)
+                            println(data)
+                            println(error)
+                        }
+                    }
+                    
+                    
                 }
             }
         }

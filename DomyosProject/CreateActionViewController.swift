@@ -140,6 +140,9 @@ class CreateActionViewController: UIViewController {
         }
         
         if let colorUnwrapped = action?.color {
+            let (red, green, blue, alpha) = colorUnwrapped.getColor()
+            println("red: \(red), green: \(green), blue: \(blue)")
+            
             switch colorUnwrapped {
                 case UIColor.redColor():
                     if let rouge = rougeButton {
@@ -214,5 +217,24 @@ extension CreateActionViewController: UITextFieldDelegate  {
         textField.resignFirstResponder()
         
         return true
+    }
+}
+
+extension UIColor {
+    func getColor() -> (red:Double, green:Double, blue:Double, alpha:Double) {
+        let color = self.CGColor!
+        
+        let numComponents = CGColorGetNumberOfComponents(color)
+        
+        if numComponents == 4 {
+            let components = CGColorGetComponents(color)
+            let red = components[0]
+            let green = components[1]
+            let blue = components[2]
+            let alpha = components[3]
+            return (Double(red), Double(green), Double(blue), Double(alpha))
+        }
+        
+        return (0.0, 0.0, 0.0, 0.0)
     }
 }

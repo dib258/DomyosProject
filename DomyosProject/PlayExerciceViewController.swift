@@ -19,8 +19,6 @@ class PlayExerciceViewController: UIViewController {
     
     var exercice: Exercice?
     
-    //var arrayOfExercices = [ActionExercice]()
-    
     var timer = NSTimer()
     var counter : Int = 0
     var isCounting = false
@@ -32,7 +30,10 @@ class PlayExerciceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        //let backgroundImage = UIImage(named: "background")?.CGImage
+        //backgroundImage?.stretchableImageWithLeftCapWidth(0, topCapHeight: 0)
+        
+        //self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
         
         if exercice != nil {
             self.title = exercice!.title
